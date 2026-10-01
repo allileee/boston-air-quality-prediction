@@ -1,19 +1,16 @@
 # boston-air-quality-prediction
 
-**Project description**
-
+**Project description:**
 Air quality in Boston changes based on the weather, the season, and local/regional emissions. This project will collect Boston's daily air pollutant and weather data, clean and combine it, create features, visualize patterns, and train models to predict tomorrow's Air Quality Index (AQI) from today's conditions.
 
 **Timeline**
+- Week 1: Choose weather monitors, create download scripts, and assess data for completeness
+- Week 2,3: Clean and combine data, handle missing values, and create initial plots
+- Week 4,5: Create features, build baselines, and train first models
+- Week 6,7: Complete models, evaluate results, create visualizations, analyze errors
+- Week 8: Update GitHub, Makefile, README, and record presentation
 
-Week 1: Choose weather monitors, create download scripts, and assess data for completeness
-Week 2-3: Clean and combine data, handle missing values, and create initial plots
-Week 4-5: Create features, build baselines, and train first models
-Week 6-7: Complete models, evaluate results, create visualizations, analyze errors
-Week 8: Update GitHub, Makefile, README, and record presentation
-
-**Goals**
-
+**Goals:**
 Successfully predict tomorrow's Air Quality Index (AQI) based on today's weather conditions. This includes whether the AQI will be below 50 (good) or above 50 (moderate/unhealthy), as well as a prediction of the exact AQI score. 
 
 Features to analyze:

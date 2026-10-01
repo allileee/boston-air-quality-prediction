@@ -24,4 +24,4 @@ Features to analyze:
 - time of year (month/season)
 
 **Data Collection Plan:**
-Daily weather data will be sourced using the historical weather API from Open-Meteo with Boston's coordinates. Daily pollutant concentrations and AQI will be sourced using the daily data from EPA or their Air Quality System (AQS) API.
+Daily weather data will be sourced using the historical weather API from Open-Meteo with Boston's coordinates. Daily pollutant concentrations and Air Quality Index will be sourced using the daily data from EPA or their Air Quality System (AQS) API.

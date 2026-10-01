@@ -13,7 +13,7 @@ Air quality in Boston changes based on the weather, the season, and local/region
 **Goals:**
 Successfully predict tomorrow's Air Quality Index (AQI) based on today's weather conditions. This includes whether the AQI will be below 50 (good) or above 50 (moderate/unhealthy), as well as a prediction of the exact AQI score. 
 
-Features to analyze
+Features to analyze:
 - today's PM2.5, Ozone, NO2, CO levels
 - pollution levels from 1, 3, and 7 days ago
 - temperature

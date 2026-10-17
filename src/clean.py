@@ -8,7 +8,7 @@ def daily_pollutant(code, year, value_col, name, standard=None):
     return per_site.groupby("Date Local").mean().rename(name)
 
 if __name__ == "__main__":
-    year = 2024
+    year = 2018
     daily = pd.concat([
         daily_pollutant(88101, year, "Arithmetic Mean", "pm25"),
         daily_pollutant(44201, year, "1st Max Value", "ozone"),

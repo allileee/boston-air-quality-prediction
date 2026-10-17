@@ -21,7 +21,7 @@ def suffolk(df: pd.DataFrame) -> pd.DataFrame:
               & (df["County Code"].astype(int) == 25)]
 
 if __name__ == "__main__":
-    year = 2024
+    year = 2018
     for code in [88101, 44201, 42602, 42101]:
         df = suffolk(fetch(f"daily_{code}_{year}"))
         df.to_csv(RAW / f"epa_{code}_{year}.csv", index=False)

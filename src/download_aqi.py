@@ -27,4 +27,4 @@ def download_aqi(year):
     print(boston["Category"].value_counts())
 
 if __name__ == "__main__":
-    download_aqi(2024)
+    download_aqi(2018)

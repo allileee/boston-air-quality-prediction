@@ -30,7 +30,7 @@ def build_daily(year):
 
 
 if __name__ == "__main__":
-    year = 2024
+    year = 2018
     daily = build_daily(year)
     out = Path("data/processed")
     out.mkdir(parents=True, exist_ok=True)

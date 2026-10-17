@@ -1,0 +1,17 @@
+cat > .gitignore << 'EOF'
+# Raw data 
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# OS files
+.DS_Store
+EOF

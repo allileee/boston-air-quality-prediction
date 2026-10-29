@@ -18,17 +18,17 @@ def build_daily(year):
         daily_pollutant(42602, year, "1st Max Value", "no2"),
         daily_pollutant(42101, year, "1st Max Value", "co", standard="CO 8-hour 1971"),
     ], axis=1)
-    
+
     aqi = pd.read_csv(f"data/raw/epa_aqi_{year}.csv", parse_dates=["Date"])
     aqi = aqi.set_index("Date")["AQI"].rename("aqi")
     return daily.join(aqi)
 
 
 if __name__ == "__main__":
-    year = 2018
-    daily = build_daily(year)
     out = Path("data/processed")
     out.mkdir(parents=True, exist_ok=True)
-    daily.to_csv(out / f"daily_{year}.csv", index_label="date")
-    print(daily.isna().sum())
-    print("saved", len(daily), "rows")
+    for year in range(2018, 2026):
+        daily = build_daily(year)
+        daily.to_csv(out / f"daily_{year}.csv", index_label="date")
+        print(year, len(daily), "rows")
+        print(daily.isna().sum().to_dict())

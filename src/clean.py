@@ -18,15 +18,10 @@ def build_daily(year):
         daily_pollutant(42602, year, "1st Max Value", "no2"),
         daily_pollutant(42101, year, "1st Max Value", "co", standard="CO 8-hour 1971"),
     ], axis=1)
-
-    # Add the AQI target
+    
     aqi = pd.read_csv(f"data/raw/epa_aqi_{year}.csv", parse_dates=["Date"])
     aqi = aqi.set_index("Date")["AQI"].rename("aqi")
-    daily = daily.join(aqi)
-
-    daily = daily.asfreq("D")
-    daily["aqi_tomorrow"] = daily["aqi"].shift(-1)
-    return daily
+    return daily.join(aqi)
 
 
 if __name__ == "__main__":

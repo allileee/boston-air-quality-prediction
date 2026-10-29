@@ -1,7 +1,8 @@
 from pathlib import Path
 
 import pandas as pd
-from sklearn.metrics import accuracy_score, f1_score, mean_absolute_error
+from sklearn.metrics import accuracy_score, f1_score, mean_absolute_error, precision_score, recall_score
+
 
 from features import split_by_year
 
@@ -17,6 +18,9 @@ for name, part in [("train", train), ("val", val), ("test", test)]:
         "days": len(part),
         "share_bad": round(y_true.mean(), 3),
         "accuracy": round(accuracy_score(y_true, y_pred), 3),
+        "precision": round(precision_score(y_true, y_pred), 3),
+        "recall": round(recall_score(y_true, y_pred), 3),
+        "always_good_acc": round(1 - y_true.mean(), 3),
         "f1": round(f1_score(y_true, y_pred), 3),
         "mae": round(mean_absolute_error(part["aqi_tomorrow"], part["aqi"]), 2),
     })

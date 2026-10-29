@@ -42,8 +42,11 @@ plt.close(fig)
 aqi_raw = pd.concat(
     [pd.read_csv(f"data/raw/epa_aqi_{y}.csv") for y in range(2018, 2026)]
 )
+counts = aqi_raw["Defining Parameter"].value_counts()
+counts = counts.drop("PM10", errors="ignore")
+
 fig, ax = plt.subplots(figsize=(7, 4))
-aqi_raw["Defining Parameter"].value_counts().plot.bar(ax=ax)
+counts.plot.bar(ax=ax)
 ax.set_ylabel("Number of days")
 ax.set_title("Pollutant that set the daily AQI")
 fig.tight_layout()

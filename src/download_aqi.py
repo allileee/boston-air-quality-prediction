@@ -17,14 +17,18 @@ def fetch(name: str) -> pd.DataFrame:
         return pd.read_csv(z.open(z.namelist()[0]), low_memory=False)
 
 def download_aqi(year):
+    path = RAW / f"epa_aqi_{year}.csv"
+    if path.exists():
+        return  # already downloaded
     df = fetch(f"daily_aqi_by_county_{year}")
-    print(df.columns.tolist())  # check the real column names
     boston = df[(df["State Name"] == "Massachusetts")
                 & (df["county Name"] == "Suffolk")]
-    boston.to_csv(RAW / f"epa_aqi_{year}.csv", index=False)
+    boston.to_csv(path, index=False)
     print(year, len(boston), "rows")
-    print(boston["Defining Parameter"].value_counts())
-    print(boston["Category"].value_counts())
 
 if __name__ == "__main__":
-    download_aqi(2018)
+    for year in range(2018, 2026):
+        try:
+            download_aqi(year)
+        except requests.HTTPError as e:
+            print(year, "failed:", e)

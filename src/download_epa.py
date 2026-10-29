@@ -20,9 +20,20 @@ def suffolk(df: pd.DataFrame) -> pd.DataFrame:
     return df[(df["State Code"].astype(str) == "25")
               & (df["County Code"].astype(int) == 25)]
 
-if __name__ == "__main__":
-    year = 2018
-    for code in [88101, 44201, 42602, 42101]:
+POLLUTANTS = [88101, 44201, 42602, 42101]
+
+def download_pollutants(year):
+    for code in POLLUTANTS:
+        path = RAW / f"epa_{code}_{year}.csv"
+        if path.exists():
+            return
         df = suffolk(fetch(f"daily_{code}_{year}"))
-        df.to_csv(RAW / f"epa_{code}_{year}.csv", index=False)
-        print(code, len(df), df["Site Num"].nunique(), "sites")
+        df.to_csv(path, index=False)
+        print(year, code, len(df), df["Site Num"].nunique(), "sites")
+
+if __name__ == "__main__":
+    for year in range(2018, 2026):
+        try:
+            download_pollutants(year)
+        except requests.HTTPError as e:
+            print(year, "failed:", e)
